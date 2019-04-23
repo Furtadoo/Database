@@ -1,0 +1,132 @@
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: mydb
+-- ------------------------------------------------------
+-- Server version	5.7.24-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `exhaustsystem`
+--
+
+DROP TABLE IF EXISTS `exhaustsystem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `exhaustsystem` (
+  `id` int(11) NOT NULL,
+  `diffuser` varchar(45) DEFAULT NULL,
+  `collector` varchar(45) DEFAULT NULL,
+  `turboBlockContainer` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_exhaustSystem_turboBlockContainer1_idx` (`turboBlockContainer`),
+  CONSTRAINT `fk_exhaustSystem_turboBlockContainer1` FOREIGN KEY (`turboBlockContainer`) REFERENCES `turboblockcontainer` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `exhaustsystem`
+--
+
+LOCK TABLES `exhaustsystem` WRITE;
+/*!40000 ALTER TABLE `exhaustsystem` DISABLE KEYS */;
+/*!40000 ALTER TABLE `exhaustsystem` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `innerpiping`
+--
+
+DROP TABLE IF EXISTS `innerpiping`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `innerpiping` (
+  `id` int(11) NOT NULL,
+  `namePipe` varchar(45) DEFAULT NULL,
+  `nameWired` varchar(45) DEFAULT NULL,
+  `turboBlockContainer` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_innerPiping_turboBlockContainer_idx` (`turboBlockContainer`),
+  CONSTRAINT `fk_innerPiping_turboBlockContainer` FOREIGN KEY (`turboBlockContainer`) REFERENCES `turboblockcontainer` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `innerpiping`
+--
+
+LOCK TABLES `innerpiping` WRITE;
+/*!40000 ALTER TABLE `innerpiping` DISABLE KEYS */;
+/*!40000 ALTER TABLE `innerpiping` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lubricationsystemmodule`
+--
+
+DROP TABLE IF EXISTS `lubricationsystemmodule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lubricationsystemmodule` (
+  `name` varchar(45) NOT NULL,
+  `turboBlockContainer` varchar(45) NOT NULL,
+  PRIMARY KEY (`name`),
+  KEY `fk_lubricationSystemModule_turboBlockContainer1_idx` (`turboBlockContainer`),
+  CONSTRAINT `fk_lubricationSystemModule_turboBlockContainer1` FOREIGN KEY (`turboBlockContainer`) REFERENCES `turboblockcontainer` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lubricationsystemmodule`
+--
+
+LOCK TABLES `lubricationsystemmodule` WRITE;
+/*!40000 ALTER TABLE `lubricationsystemmodule` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lubricationsystemmodule` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `turboblockcontainer`
+--
+
+DROP TABLE IF EXISTS `turboblockcontainer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `turboblockcontainer` (
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `turboblockcontainer`
+--
+
+LOCK TABLES `turboblockcontainer` WRITE;
+/*!40000 ALTER TABLE `turboblockcontainer` DISABLE KEYS */;
+/*!40000 ALTER TABLE `turboblockcontainer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'mydb'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-04-23 16:24:38
